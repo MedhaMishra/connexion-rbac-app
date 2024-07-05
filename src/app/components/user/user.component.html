@@ -1,0 +1,71 @@
+<div class="user-management">
+
+    <!-- Create User Form -->
+    <div *ngIf="canCreateUser()">
+        <br><h2>Create New User</h2>
+        <form (ngSubmit)="createUser()">
+            <label>
+                Name:
+                <input [(ngModel)]="newUser.name" name="name" required />
+            </label>
+            <label>
+                Username:
+                <input [(ngModel)]="newUser.username" name="username" required />
+            </label>
+            <label>
+                Email:
+                <input [(ngModel)]="newUser.email" name="email" type="email" required />
+            </label>
+            <button type="submit"  class="btn btn-sm btn-success mb-2">Create User</button>
+        </form>
+    </div>
+
+    <!-- Edit User Form -->
+    <div *ngIf="editing && selectedUser && canUpdateUser()">
+        <h2>Edit User</h2>
+        <form (ngSubmit)="updateUser()">
+            <label>
+                Name:
+                <input [(ngModel)]="selectedUser.name" name="editName" required />
+            </label>
+            <label>
+                Username:
+                <input [(ngModel)]="selectedUser.username" name="editUsername" required />
+            </label>
+            <label>
+                Email:
+                <input [(ngModel)]="selectedUser.email" name="editEmail" type="email" required />
+            </label>
+            <button type="submit"  class="btn btn-sm btn-success mb-2">Update User</button>
+            <button type="button" (click)="resetForm()" class="btn btn-link">Cancel</button>
+        </form>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 30%">Name</th>
+                <th style="width: 30%">Email</th>
+                <th style="width: 30%">Role</th>
+                <th style="width: 10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+                <td style="white-space: nowrap" *ngIf="canUpdateUser()">
+                    <button (click)="selectUser(user)" *ngIf="canUpdateUser()" class="btn btn-sm btn-primary mr-1">Edit</button>
+                    <button (click)="deleteUser(user.id)" *ngIf="canDeleteUser()" class="btn btn-sm btn-danger ">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="!users">
+                <td colspan="4" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

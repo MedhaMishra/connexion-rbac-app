@@ -1,5 +1,3 @@
-# connexion-rbac-app
-
 Additional Considerations
 Given more time, the following improvements can be made:
 

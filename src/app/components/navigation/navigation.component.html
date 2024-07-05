@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Users</a>
+        <a class="nav-item nav-link" routerLink="/protected-route1" *ngIf="canViewRoute('protected-route1')">ProtectedRoute1</a>
+        <a class="nav-item nav-link"routerLink="/protected-route2" *ngIf="canViewRoute('protected-route2')">ProtectedRoute2</a>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <button class="btn btn-sm btn-success mb-2">
+            Assume User
+        </button>
+    </div>
+</nav>
+
+
+<h2>Current User: {{ currentUser?.name|| 'None' }}</h2>
+
+<div>
+    <button *ngFor="let user of users" (click)="assumeRole(user)">
+        {{ user.name }}
+    </button>
+</div>
