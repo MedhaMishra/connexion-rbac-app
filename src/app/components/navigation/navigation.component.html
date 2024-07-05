@@ -6,17 +6,25 @@
     </div>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-        <button class="btn btn-sm btn-success mb-2">
+        <button class="btn btn-sm btn-success mb-2" (click)="onclick()"> {{OpenUserListToAssume?"Click to":"Close"}}
             Assume User
         </button>
+
+          
     </div>
 </nav>
 
 
-<h2>Current User: {{ currentUser?.name|| 'None' }}</h2>
+<!--will create if condition my default it will
+            b hide on click it will toggle--->
+            <ng-container *ngIf="visible">
+                <div class="bg-white shadow-sm p-3">
+                    <button *ngFor="let user of users" (click)="assumeRole(user)">
+                        {{ user.name }}
+                    </button>
+                </div>
+          </ng-container>
 
-<div>
-    <button *ngFor="let user of users" (click)="assumeRole(user)">
-        {{ user.name }}
-    </button>
-</div>
+
+<h2 style="text-align: center;">Current User: {{ currentUser?.name|| 'None' }}</h2>
+

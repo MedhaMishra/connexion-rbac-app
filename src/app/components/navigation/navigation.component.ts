@@ -37,4 +37,18 @@ export class NavigationComponent {
 
     return false;
   }
+
+  //OpenUserListToAssume variable, its true than display user list to assume
+  OpenUserListToAssume:boolean = true
+
+  //hiding list
+  visible:boolean = false
+
+
+  //onclick toggling both
+  onclick()
+  {
+    this.OpenUserListToAssume = !this.OpenUserListToAssume; //not equal to condition
+    this.visible = !this.visible
+  }
 }

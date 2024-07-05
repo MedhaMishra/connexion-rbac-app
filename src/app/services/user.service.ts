@@ -60,16 +60,12 @@ export class UserService {
       // Next 4 users are Staff who can see ProtectedRoute1 and can read, create, update users
       return [
         Permissions.CanReadUser,
-        Permissions.CanCreateUser,
-        Permissions.CanUpdateUser,
         Permissions.CanViewProtectedRoute1
       ];
     } else {
       // Last 4 users are Staff who can see ProtectedRoute2 and can read, create, update users
       return [
         Permissions.CanReadUser,
-        Permissions.CanCreateUser,
-        Permissions.CanUpdateUser,
         Permissions.CanViewProtectedRoute2
       ];
     }
