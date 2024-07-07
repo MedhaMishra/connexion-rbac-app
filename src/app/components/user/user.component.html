@@ -1,22 +1,22 @@
 <div class="user-management">
-
     <!-- Create User Form -->
     <div *ngIf="canCreateUser()">
-        <br><h2>Create New User</h2>
+        <br>
+        <h2>Create New User</h2>
         <form (ngSubmit)="createUser()">
             <label>
                 Name:
-                <input [(ngModel)]="newUser.name" name="name" required />
+                <input [(ngModel)]="newUser.name" name="name" required /> <!-- Input for user's name -->
             </label>
             <label>
                 Username:
-                <input [(ngModel)]="newUser.username" name="username" required />
+                <input [(ngModel)]="newUser.username" name="username" required /> <!-- Input for user's username -->
             </label>
             <label>
                 Email:
-                <input [(ngModel)]="newUser.email" name="email" type="email" required />
+                <input [(ngModel)]="newUser.email" name="email" type="email" required /> <!-- Input for user's email -->
             </label>
-            <button type="submit"  class="btn btn-sm btn-success mb-2">Create User</button>
+            <button type="submit" class="btn btn-sm btn-success mb-2">Create User</button> <!-- Submit button -->
         </form>
     </div>
 
@@ -26,21 +26,22 @@
         <form (ngSubmit)="updateUser()">
             <label>
                 Name:
-                <input [(ngModel)]="selectedUser.name" name="editName" required />
+                <input [(ngModel)]="selectedUser.name" name="editName" required /> <!-- Input for editing user's name -->
             </label>
             <label>
                 Username:
-                <input [(ngModel)]="selectedUser.username" name="editUsername" required />
+                <input [(ngModel)]="selectedUser.username" name="editUsername" required /> <!-- Input for editing user's username -->
             </label>
             <label>
                 Email:
-                <input [(ngModel)]="selectedUser.email" name="editEmail" type="email" required />
+                <input [(ngModel)]="selectedUser.email" name="editEmail" type="email" required /> <!-- Input for editing user's email -->
             </label>
-            <button type="submit"  class="btn btn-sm btn-success mb-2">Update User</button>
-            <button type="button" (click)="resetForm()" class="btn btn-link">Cancel</button>
+            <button type="submit" class="btn btn-sm btn-success mb-2">Update User</button> <!-- Submit button for update -->
+            <button type="button" (click)="resetForm()" class="btn btn-link">Cancel</button> <!-- Cancel button -->
         </form>
     </div>
 
+    <!-- User Table -->
     <table class="table table-striped">
         <thead>
             <tr>
@@ -51,15 +52,18 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Iterate over users array to display user information -->
             <tr *ngFor="let user of users">
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.role}}</td>
+                <td>{{user.name}}</td> <!-- Display user's name -->
+                <td>{{user.email}}</td> <!-- Display user's email -->
+                <td>{{user.role}}</td> <!-- Display user's role -->
                 <td style="white-space: nowrap" *ngIf="canUpdateUser()">
+                    <!-- Actions for updating and deleting users, shown conditionally -->
                     <button (click)="selectUser(user)" *ngIf="canUpdateUser()" class="btn btn-sm btn-primary mr-1">Edit</button>
-                    <button (click)="deleteUser(user.id)" *ngIf="canDeleteUser()" class="btn btn-sm btn-danger ">Delete</button>
+                    <button (click)="deleteUser(user.id)" *ngIf="canDeleteUser()" class="btn btn-sm btn-danger">Delete</button>
                 </td>
             </tr>
+            <!-- Show spinner if users are loading -->
             <tr *ngIf="!users">
                 <td colspan="4" class="text-center">
                     <span class="spinner-border spinner-border-lg align-center"></span>
@@ -67,5 +71,4 @@
             </tr>
         </tbody>
     </table>
-
 </div>

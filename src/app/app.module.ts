@@ -1,6 +1,6 @@
+// Import necessary Angular modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,8 +11,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+// Define the AppModule
 @NgModule({
   declarations: [
+    // Declare the components used in the application
     AppComponent,
     UserComponent,
     ProtectedRoute1Component,
@@ -20,13 +22,14 @@ import { FormsModule } from '@angular/forms';
     NavigationComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule
+    // Import necessary modules
+    BrowserModule, // Provides services that are essential to launch and run a browser app
+    AppRoutingModule, // Contains the application routing configuration
+    FormsModule, // Provides support for template-driven forms
+    HttpClientModule, // Provides support for making HTTP requests
+    BrowserAnimationsModule // Provides support for animations
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] // Bootstrap the AppComponent at application startup
 })
 export class AppModule { }

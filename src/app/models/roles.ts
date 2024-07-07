@@ -1,4 +1,5 @@
+// Enum defining roles for users
 export enum Roles {
-    Admin = 'Admin',
-    Staff = 'Staff'
+    Admin = 'Admin', // Role for administrators
+    Staff = 'Staff' // Role for staff members
 }
